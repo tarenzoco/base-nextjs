@@ -11,7 +11,7 @@ export default function Home() {
       fontFamily: "sans-serif"
     }}>
       <h1>Welcome to Tarenzo 👋</h1>
-      <p>Start building your app with Supabase & Next.js</p>
+      <p>It's our first app, we hope you'll enjoy it.</p>
       <Link href="/login">
         <button style={{
           padding: "10px 20px",
