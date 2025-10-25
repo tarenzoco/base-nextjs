@@ -1,43 +1,30 @@
-import { createClient } from '@supabase/supabase-js'
+import Link from "next/link";
 
-// Initialize Supabase Client (frontend safe)
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
-export default function Home({ data }) {
+export default function Home() {
   return (
     <div style={{
-      fontFamily: 'Inter, sans-serif',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '100vh',
-      background: '#0a0a0a',
-      color: '#fff'
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      height: "100vh",
+      fontFamily: "sans-serif"
     }}>
-      <h1>🚀 TARENZO Base Connected</h1>
-      <p>Live Supabase Connection Successful ✅</p>
-      <div style={{
-        background: '#111',
-        borderRadius: '12px',
-        padding: '20px',
-        marginTop: '20px',
-        width: '80%',
-        maxWidth: '500px',
-        textAlign: 'left',
-      }}>
-        <h3>Data from Supabase:</h3>
-        <pre>{JSON.stringify(data, null, 2)}</pre>
-      </div>
+      <h1>Welcome to Tarenzo 👋</h1>
+      <p>Start building your app with Supabase & Next.js</p>
+      <Link href="/login">
+        <button style={{
+          padding: "10px 20px",
+          borderRadius: "8px",
+          marginTop: "20px",
+          background: "#111",
+          color: "#fff",
+          border: "none",
+          cursor: "pointer"
+        }}>
+          Go to Login
+        </button>
+      </Link>
     </div>
-  )
-}
-
-// Server-side fetch from Supabase
-export async function getServerSideProps() {
-  const { data, error } = await supabase.from('test_table').select('*')
-  if (error) console.error('Supabase Error:', error)
-  return { props: { data: data || [] } }
+  );
 }
